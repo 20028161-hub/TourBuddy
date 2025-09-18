@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TourBuddy.Models.Tour>
+
+@{
+    ViewData["Title"] = "Browse Tours";
+}
+
+<section class="page-header">
+    <div class="page-header-content">
+        <h1 style="color:white;font-size:40px" data-aos="fade-down">Explore Our Tours</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Find the perfect journey from our collection of curated experiences.</p>
+    </div>
+</section>
+
+<section class="tours-section container" style="margin-top:40px">
+    <div class="tours-grid" data-aos="fade-up" data-aos-delay="200">
+        @foreach (var tour in Model)
+        {
+            var firstImageUrl = tour.ImageUrls?.Split(',').FirstOrDefault()?.Trim();
+            <div class="tour-card">
+                <img src="@firstImageUrl" alt="@tour.Name">
+                <div class="tour-card-content">
+                    <h3>@tour.Name</h3>
+                    <p>@(tour.Description.Length > 100 ? tour.Description.Substring(0, 100) + "..." : tour.Description)</p>
+                    <a asp-action="Details" asp-route-id="@tour.Id" class="btn-details">View Details &rarr;</a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

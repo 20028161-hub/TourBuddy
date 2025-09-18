@@ -1,0 +1,171 @@
+﻿@model TourBuddy.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Details";
+    var firstImageUrl = Model.Tour.ImageUrls?.Split(',').FirstOrDefault()?.Trim();
+}
+
+<style>
+    .booking-detail-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .detail-block {
+        background: #fff;
+        border: 1px solid var(--border-color);
+        padding: 25px;
+        margin-bottom: 1.5rem;
+    }
+
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+    .detail-label {
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+
+    .payment-summary table {
+        width: 100%;
+    }
+
+    .payment-summary td {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .payment-summary .total-row td {
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-top: 2px solid var(--primary-color);
+        border-bottom: none;
+    }
+
+    .tour-summary-card {
+        background: #fff;
+        border: 1px solid var(--border-color);
+        text-align: center;
+    }
+
+        .tour-summary-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .tour-summary-card h3 {
+            padding: 20px 20px 10px;
+        }
+
+        .tour-summary-card p {
+            padding: 0 20px 20px;
+        }
+
+        .tour-summary-card .btn-action {
+            margin: 0 20px 20px;
+        }
+
+    .help-card {
+        background: #fff;
+        border: 1px solid var(--border-color);
+        padding: 25px;
+        margin-top: 1.5rem;
+    }
+
+        .help-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .help-card .action-link {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+    .status {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        border-radius: 15px;
+    }
+
+        .status.confirmed {
+            background-color: #28a745;
+        }
+
+        .status.completed {
+            background-color: #6c757d;
+        }
+
+        .status.pending {
+            background-color: #ffc107;
+        }
+
+        .status.cancelled {
+            background-color: #dc3545;
+        }
+
+    @@media (min-width: 992px) {
+        .booking-detail-grid {
+            grid-template-columns: 2fr 1fr;
+        }
+    }
+</style>
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Booking Details</h1>
+            <p>Booking ID: <span class="booking-id">TB-@Model.Id.ToString("D6")</span></p>
+        </div>
+
+        <div class="booking-detail-grid">
+            <div class="booking-main-details">
+                <div class="detail-block" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-info-circle"></i> Booking Information</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value status @Model.Status.ToLower()">@Model.Status</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Booking Placed On</span>
+                        <span class="detail-value">@Model.BookingDate.ToLongDateString()</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Trip Date</span>
+                        <span class="detail-value">@Model.TourDate.ToLongDateString()</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Guests</span>
+                        <span class="detail-value">@Model.NumberOfGuests Adults</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <aside class="booking-sidebar">
+                <div class="tour-summary-card" data-aos="fade-left" data-aos-delay="100">
+                    <img src="@firstImageUrl" alt="@Model.Tour.Name">
+                    <h3>@Model.Tour.Name</h3>
+                    <p>@Model.Tour.Description.Substring(0, Math.Min(Model.Tour.Description.Length, 100))...</p>
+                    <a asp-controller="Tours" asp-action="Details" asp-route-id="@Model.Tour.Id" class="btn-action secondary full-width">View Tour Page</a>
+                </div>
+                <div class="help-card" data-aos="fade-left" data-aos-delay="200">
+                    <h4>Need Help?</h4>
+                    <a href="#" class="action-link"><i class="fas fa-question-circle"></i> Contact Support</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

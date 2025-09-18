@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Reports";
+}
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="page-actions-header">
+            <h1>Booking Reports</h1>
+            <p>A summary of your booking activity.</p>
+        </div>
+
+        <div class="stat-cards-grid">
+            <div class="card">
+                <h3>Total Lifetime Revenue</h3>
+                <p class="stat-value">$@ViewBag.TotalRevenue.ToString("N2")</p>
+            </div>
+            <div class="card">
+                <h3>Total Lifetime Bookings</h3>
+                <p class="stat-value">@ViewBag.TotalBookings</p>
+            </div>
+        </div>
+
+        <div class="dashboard-block" style="margin-top:20px">
+            <h2>Bookings per Tour</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Tour Name</th>
+                        <th>Number of Bookings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.BookingsByTour)
+                    {
+                        <tr>
+                            <td>@item.TourName</td>
+                            <td>@item.Count</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

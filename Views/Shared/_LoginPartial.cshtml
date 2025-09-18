@@ -1,0 +1,33 @@
+﻿@using System.Security.Claims
+
+@if (User.Identity.IsAuthenticated)
+{
+    var userRole = User.FindFirstValue(ClaimTypes.Role);
+    if (userRole == "Agency")
+    {
+        <li><a asp-controller="AgencyDashboard" asp-action="Index">Dashboard</a></li>
+        <li><a asp-controller="AgencyDashboard" asp-action="ManageTours">Manage Tours</a></li>
+        <li><a asp-controller="AgencyDashboard" asp-action="ViewBookings">Bookings</a></li>
+        <li><a asp-controller="AgencyDashboard" asp-action="ManageReviews">Reviews</a></li>
+        <li><a asp-controller="AgencyDashboard" asp-action="Reports">Reports</a></li>
+        <li><a asp-controller="AgencyDashboard" asp-action="EditProfile">Profile</a></li>
+    }
+    else
+    {
+        <li><a asp-controller="Tours" asp-action="Index">Browse Tours</a></li>
+        <li><a asp-controller="TouristDashboard" asp-action="Index">Dashboard</a></li>
+        <li><a asp-controller="TouristDashboard" asp-action="MyBookings">My Bookings</a></li>
+        <li><a asp-controller="TouristDashboard" asp-action="EditProfile">Profile</a></li>
+    }
+    <li>
+        <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+            <a href="javascript:document.getElementById('logoutForm').submit()" style="cursor: pointer; padding: 1rem 0; display: block;">Logout</a>
+        </form>
+    </li>
+}
+else
+{
+    <li><a asp-controller="Tours" asp-action="Index">Browse Tours</a></li>
+    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+    <li><a asp-controller="Account" asp-action="Register">Sign Up</a></li>
+}

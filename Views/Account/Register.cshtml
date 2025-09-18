@@ -1,0 +1,61 @@
+﻿@model TourBuddy.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Create an Account";
+}
+
+<section class="login-section">
+    <div class="login-card" data-aos="fade-up">
+        <h1>Create Your Account</h1>
+        <p class="form-subtitle">Join our community of travelers and guides!</p>
+
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group user-type-selector">
+                <label>
+                    <input type="radio" asp-for="UserType" value="Tourist" checked>
+                    <div class="user-type-box">
+                        <i class="fas fa-user"></i>
+                        <span>I am a Tourist</span>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" asp-for="UserType" value="Agency">
+                    <div class="user-type-box">
+                        <i class="fas fa-briefcase"></i>
+                        <span>I am an Agency</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FullName"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="cta-button full-width">Create Account</button>
+        </form>
+
+        <p class="register-link">
+            Already have an account? <a asp-controller="Account" asp-action="Login">Log in</a>
+        </p>
+    </div>
+</section>
+
+<style>
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.9em;
+    }</style>

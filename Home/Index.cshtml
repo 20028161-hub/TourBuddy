@@ -1,9 +1,91 @@
-﻿@{
+﻿@model IEnumerable<TourBuddy.Models.Tour>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero">
+    <div class="hero-content">
+        <h1 data-aos="fade-down" style="color:white;">Discover Your Next Great Adventure</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Book unique travel experiences with local experts around the world.</p>
+        <a asp-controller="Tours" asp-action="Index" class="cta-button" data-aos="zoom-in" data-aos-delay="400">Explore Tours</a>
+    </div>
+</section>
 
+<section class="section container">
+    <h2 class="section-title" data-aos="fade-up">Why Choose TourBuddy?</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Your perfect trip, perfectly planned.</p>
+    <div class="features-grid">
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-route"></i>
+            <h3>Expert Local Guides</h3>
+            <p>Discover hidden gems with guides who call your destination home.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-drafting-compass"></i>
+            <h3>Tailor-Made Trips</h3>
+            <p>Every itinerary is crafted to your interests, style, and budget.</p>
+        </div>
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Travel with peace of mind knowing we're here for you anytime.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section container">
+    <h2 class="section-title" data-aos="fade-up">Featured Destinations</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Hand-picked tours with unforgettable experiences.</p>
+    <div class="tours-grid" data-aos="fade-up" data-aos-delay="200">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var tour in Model)
+            {
+                var firstImageUrl = tour.ImageUrls?.Split(',').FirstOrDefault()?.Trim();
+                <div class="tour-card">
+                    <img src="@firstImageUrl" alt="@tour.Name">
+                    <div class="tour-card-content">
+                        <h3>@tour.Name</h3>
+                        <p>@(tour.Description.Length > 100 ? tour.Description.Substring(0, 100) + "..." : tour.Description)</p>
+                        <a asp-controller="Tours" asp-action="Details" asp-route-id="@tour.Id" class="btn-details">View Details &rarr;</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>
+
+<section class="section group-info">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Group Members (Assignment)</h2>
+        <div data-aos="fade-up" data-aos-delay="100">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Full Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>20029784</td>
+                        <td>Kritika Shahi</td>
+                    </tr>
+                    <tr>
+                        <td>20028045</td>
+                        <td>Ashraya Shrestha</td>
+                    </tr>
+                    <tr>
+                        <td>20026918</td>
+                        <td>Samir Khatri</td>
+                    </tr>
+                    <tr>
+                        <td>20028161</td>
+                        <td>Khusi Bansal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

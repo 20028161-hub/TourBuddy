@@ -1,0 +1,88 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Agency Dashboard";
+    var recentBookings = ViewBag.RecentBookings as List<TourBuddy.Models.Booking>;
+}
+
+<style>
+    .stat-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+        .stat-cards-grid .card {
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-cards-grid h3 {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-cards-grid .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+</style>
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header" data-aos="fade-up">
+            <h1>@User.FindFirstValue(ClaimTypes.GivenName) Dashboard</h1>
+            <p>Welcome back! Here's what's happening with your tours.</p>
+        </div>
+
+        <div class="stat-cards-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+                <h3>Total Revenue (All Time)</h3>
+                <p class="stat-value">$@ViewBag.TotalRevenue.ToString("N2")</p>
+            </div>
+            <div class="card">
+                <h3>Total Bookings (All Time)</h3>
+                <p class="stat-value">@ViewBag.TotalBookings</p>
+            </div>
+            <div class="card">
+                <h3>Active Tours</h3>
+                <p class="stat-value">@ViewBag.ActiveToursCount</p>
+            </div>
+            <div class="card">
+                <h3>Average Rating</h3>
+                <p class="stat-value">@ViewBag.AverageRating</p>
+            </div>
+        </div>
+
+        <div class="dashboard-block" data-aos="fade-up" data-aos-delay="200">
+            <h2 style="margin-bottom:15px;"><i class="fas fa-history"></i> Recent Bookings</h2>
+            @if (recentBookings != null && recentBookings.Any())
+            {
+                <div class="tours-grid">
+                    @foreach (var booking in recentBookings)
+                    {
+                        var firstImageUrl = booking.Tour.ImageUrls?.Split(',').FirstOrDefault()?.Trim();
+                        <div class="tour-card">
+                            <img src="@firstImageUrl" alt="@booking.Tour.Name">
+                            <div class="tour-card-content">
+                                <h3>@booking.Tour.Name</h3>
+                                <p>
+                                    <strong>Tourist:</strong> @booking.Tourist.FullName<br />
+                                    <strong>Date:</strong> @booking.TourDate.ToShortDateString()<br />
+                                    <strong>Status:</strong> @booking.Status
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>You have no recent bookings.</p>
+            }
+        </div>
+    </div>
+</section>

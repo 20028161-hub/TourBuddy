@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TourBuddy.Models.Review>
+
+@{
+    ViewData["Title"] = "Manage Reviews";
+}
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="page-actions-header">
+            <h1>Customer Reviews</h1>
+        </div>
+
+        <div class="reviews-grid">
+            @foreach (var review in Model)
+            {
+                <div class="agency-review-card" data-aos="fade-up">
+                    <div class="review-header">
+                        <div class="review-tour-name">@review.Tour.Name</div>
+                        <div class="review-rating">
+                            @for (int i = 0; i < review.Rating; i++)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            @for (int i = review.Rating; i < 5; i++)
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        </div>
+                    </div>
+                    <p class="review-text">"@review.Comment"</p>
+                    <div class="review-author-info">
+                        <strong>@review.Tourist.FullName</strong>
+                        <span>Reviewed on @review.ReviewDate.ToShortDateString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

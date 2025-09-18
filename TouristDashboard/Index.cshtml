@@ -1,0 +1,163 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "My Dashboard";
+    var upcomingBookings = ViewBag.UpcomingBookings as List<TourBuddy.Models.Booking>;
+    var pastBookings = ViewBag.PastBookings as List<TourBuddy.Models.Booking>;
+}
+
+<style>
+    .stat-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+        .stat-cards-grid .card {
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-cards-grid h3 {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-cards-grid .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+    .booking-card-full {
+        display: flex;
+        flex-wrap: wrap;
+        background: #fff;
+        border: 1px solid var(--border-color);
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+    }
+
+    .booking-card-image {
+        flex: 0 0 250px;
+        height:200px;
+        position: relative;
+    }
+
+        .booking-card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+    .trip-status {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+        .trip-status.confirmed {
+            background-color: #28a745;
+        }
+
+        .trip-status.completed {
+            background-color: #6c757d;
+        }
+
+    .booking-card-details {
+        flex: 1 1 300px;
+        padding: 25px;
+    }
+
+    .booking-card-actions {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .details-grid {
+        display: grid;
+        gap: 8px;
+        margin-top: 15px;
+        color: var(--secondary-color);
+    }
+
+        .details-grid span i {
+            margin-right: 8px;
+            width: 15px;
+            text-align: center;
+        }
+
+    @@media (max-width: 768px) {
+        .booking-card-image, .booking-card-actions {
+            flex-basis: 100%;
+        }
+
+        .booking-card-actions {
+            flex-direction: row;
+        }
+    }
+</style>
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-header" data-aos="fade-up">
+            <h1>Welcome Back, @User.FindFirstValue(ClaimTypes.GivenName)!</h1>
+            <p>Here's a look at your adventures with TourBuddy.</p>
+        </div>
+
+        <div class="stat-cards-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+                <h3>Total Spent</h3>
+                <p class="stat-value">$@ViewBag.TotalSpent.ToString("N2")</p>
+            </div>
+            <div class="card">
+                <h3>Trips Taken</h3>
+                <p class="stat-value">@ViewBag.TripsTaken</p>
+            </div>
+            <div class="card">
+                <h3>Upcoming Trips</h3>
+                <p class="stat-value">@ViewBag.UpcomingTripsCount</p>
+            </div>
+        </div>
+
+        <div class="dashboard-block" data-aos="fade-up" data-aos-delay="200">
+            <h2><i class="fas fa-plane-departure"></i> Your Next Adventure</h2>
+            @if (upcomingBookings != null && upcomingBookings.Any())
+            {
+                var nextTrip = upcomingBookings.First();
+                var firstImageUrl = nextTrip.Tour.ImageUrls?.Split(',').FirstOrDefault()?.Trim();
+                <div class="booking-card-full">
+                    <div class="booking-card-image">
+                        <img src="@firstImageUrl" alt="@nextTrip.Tour.Name">
+                        <div class="trip-status confirmed">@nextTrip.Status</div>
+                    </div>
+                    <div class="booking-card-details">
+                        <h3>@nextTrip.Tour.Name</h3>
+                        <div class="details-grid">
+                            <span><i class="fas fa-calendar-check"></i> Date: @nextTrip.TourDate.ToLongDateString()</span>
+                            <span><i class="fas fa-users"></i> Guests: @nextTrip.NumberOfGuests</span>
+                        </div>
+                    </div>
+                    <div class="booking-card-actions">
+                        <a asp-action="BookingDetails" asp-route-id="@nextTrip.Id" class="btn-action">View Details</a>
+                        <a asp-action="MyBookings" class="btn-action secondary">All Bookings</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>You have no upcoming trips. <a asp-controller="Tours" asp-action="Index">Time to book one!</a></p>
+            }
+        </div>
+    </div>
+</section>

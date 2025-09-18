@@ -1,0 +1,109 @@
+﻿@model TourBuddy.Models.Tour
+
+@{
+    ViewData["Title"] = Model.Name;
+    var imageUrls = Model.ImageUrls?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
+    var firstImageUrl = imageUrls.FirstOrDefault();
+}
+
+<style>
+    .tour-content-section {
+        margin-top:70px;
+    }
+    .tour-gallery {
+        margin-bottom: 2rem;
+    }
+
+    .main-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border: 1px solid var(--border-color);
+    }
+
+    .thumbnail-grid {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+        .thumbnail-grid img {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+            .thumbnail-grid img:hover,
+            .thumbnail-grid img.active {
+                border-color: var(--primary-color);
+            }
+</style>
+
+<section class="tour-details-header">
+    <div class="container"><h1>@Model.Name</h1></div>
+</section>
+
+<section class="tour-content-section container">
+    <div class="tour-layout">
+        <div class="tour-main-content">
+            @if (imageUrls.Any())
+            {
+                <div class="tour-gallery">
+                    <img src="@firstImageUrl" alt="@Model.Name" class="main-image" id="mainTourImage">
+
+                    @if (imageUrls.Count > 1)
+                    {
+                        <div class="thumbnail-grid">
+                            @foreach (var imageUrl in imageUrls)
+                            {
+                                <img src="@imageUrl" alt="Thumbnail for @Model.Name" onclick="changeImage('@imageUrl')" class="@(imageUrl == firstImageUrl ? "active" : "")">
+                            }
+                        </div>
+                    }
+                </div>
+            }
+
+            <h2>About This Tour</h2>
+            <p>@Model.Description</p>
+        </div>
+        <aside class="tour-sidebar">
+            <div class="booking-card">
+                <h3>Book Your Trip</h3>
+                <div class="price-display">$@Model.Price.ToString("F2") <span>/ person</span></div>
+                <form asp-controller="TouristDashboard" asp-action="CreateBooking" method="post">
+                    <input type="hidden" name="TourId" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="tour-date">Date</label>
+                        <input type="date" name="TourDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <input type="number" name="NumberOfGuests" value="1" min="1" max="@Model.MaxGroupSize" required>
+                    </div>
+                    <button type="submit" class="cta-button full-width">Book Now</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function changeImage(newImageUrl) {
+            const mainImage = document.getElementById('mainTourImage');
+            mainImage.src = newImageUrl;
+
+            document.querySelectorAll('.thumbnail-grid img').forEach(img => {
+                img.classList.remove('active');
+                if (img.src === newImageUrl) {
+                    img.classList.add('active');
+                }
+            });
+        }
+    </script>
+}

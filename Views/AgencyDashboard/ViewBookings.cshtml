@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TourBuddy.Models.Booking>
+
+@{
+    ViewData["Title"] = "All Bookings";
+    var statuses = new List<string> { "Pending", "Confirmed", "Cancelled" };
+}
+
+<section class="dashboard-section">
+    <div class="container">
+        <div class="page-actions-header">
+            <h1>All Bookings</h1>
+        </div>
+        <div class="dashboard-block">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Tour Name</th>
+                        <th>Tourist</th>
+                        <th>Booking Date</th>
+                        <th>Guests</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.Tour.Name</td>
+                            <td>@booking.Tourist.FullName</td>
+                            <td>@booking.BookingDate.ToShortDateString()</td>
+                            <td>@booking.NumberOfGuests</td>
+                            <td>
+                                <form asp-action="UpdateBookingStatus" method="post" style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="hidden" name="bookingId" value="@booking.Id" />
+                                    <select name="status" class="form-control" style="width: 150px;">
+                                        @foreach (var status in statuses)
+                                        {
+                                            <option value="@status" selected="@(booking.Status == status)">@status</option>
+                                        }
+                                    </select>
+                                    <button type="submit" class="btn-action">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

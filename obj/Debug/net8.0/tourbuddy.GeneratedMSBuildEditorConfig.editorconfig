@@ -1,0 +1,129 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = tourbuddy
+build_property.RootNamespace = tourbuddy
+build_property.ProjectDir = /Users/khushibansal/Desktop/TourBuddy/tourbuddy/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/khushibansal/Desktop/TourBuddy/tourbuddy
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/CreateTour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL0NyZWF0ZVRvdXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL0VkaXRQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/EditTour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL0VkaXRUb3VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/ManageReviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL01hbmFnZVJldmlld3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/ManageTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL01hbmFnZVRvdXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL1JlcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/AgencyDashboard/ViewBookings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbmN5RGFzaGJvYXJkL1ZpZXdCb29raW5ncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/TouristDashboard/BookingDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cmlzdERhc2hib2FyZC9Cb29raW5nRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/TouristDashboard/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cmlzdERhc2hib2FyZC9FZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/TouristDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cmlzdERhc2hib2FyZC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/TouristDashboard/LeaveReview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cmlzdERhc2hib2FyZC9MZWF2ZVJldmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/TouristDashboard/MyBookings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cmlzdERhc2hib2FyZC9NeUJvb2tpbmdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Tours/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cnMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Tours/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG91cnMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/khushibansal/Desktop/TourBuddy/tourbuddy/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-czzf7097hh
